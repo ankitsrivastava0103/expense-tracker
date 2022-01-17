@@ -1,5 +1,6 @@
 import React from 'react'
 import Expense from './components/expenses/Expense'
+import NewExpense from './components/newExpenses/NewExpense'
 
 const App = () => {
   const expenses = [
@@ -24,7 +25,16 @@ const App = () => {
     },
   ]
 
-  return <Expense items={expenses} />
+  const addExpenseHandler = (expense) => {
+    console.log(expense)
+  }
+
+  return (
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expense items={expenses} />
+    </div>
+  )
 }
 
 export default App
