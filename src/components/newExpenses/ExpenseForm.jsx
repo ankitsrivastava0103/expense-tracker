@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './ExpenseForm.css'
 
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancelForm }) => {
   // Other Ways To Update State Usinng Single Object
   // First way is not the ideal way. May cause some problem
   // Second way is the ideal way to update state in one object.
@@ -61,7 +61,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     event.preventDefault()
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     }
     onSaveExpenseData(expenseData)
@@ -96,13 +96,14 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
           <input
             type='date'
             min='2019-01-01'
-            max='2021-12-31'
+            max='2022-12-31'
             onChange={dateChangeHandler}
             value={enteredDate}
           />
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button onClick={onCancelForm}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
